@@ -29,7 +29,7 @@ const typeDefs = gql`
   type Book {
     id: ID!
     title: String!
-    author: Author!
+    authorId: String!
   }
 
   type Author {
@@ -111,8 +111,8 @@ const resolvers = {
       author.name = input.name;
       return author;
     },
-    deleteAuthor: (_, { input }) => {
-      authors = authors.filter((author) => author.id !== input.id);
+    deleteAuthor: (_, { id }) => {
+      authors = authors.filter((author) => author.id !== id);
       return true;
     },
   },
